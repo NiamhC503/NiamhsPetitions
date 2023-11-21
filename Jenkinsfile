@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(name: 'DEPLOY', choices: ['Yes, Deploy', 'No, Do Not Deploy'], description: 'Would you like to deploy?')
+    }
     stages {
         stage ('GetProject') {
             steps {
@@ -26,6 +29,9 @@ pipeline {
             }
         }
         stage ('Deploy') {
+            when {
+                expression {params.DEPLOY == 'Yes, Deploy' }
+            }
             steps {
                 sh 'docker build -f Dockerfile -t myapp . '
                 sh 'docker rm -f "myappcontainer" || true'
