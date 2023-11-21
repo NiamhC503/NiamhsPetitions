@@ -1,0 +1,16 @@
+body {
+ background-color: #43a4ba;
+ color: #0b2e36;
+ text-align: center;
+ font-family: verdana;
+ font-size: 20px;
+}
+
+p {
+ color: black;
+ font-size: 15px;
+}
+
+ul {
+text-align: left;
+}
