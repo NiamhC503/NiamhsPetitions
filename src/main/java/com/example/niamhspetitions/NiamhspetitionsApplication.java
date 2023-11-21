@@ -56,7 +56,8 @@ public class NiamhspetitionsApplication {
 		return "viewpetition";
 	}
 
-	//handles viewpetition.html form to add signature to that petition, refreshes page to show newly added signature
+	//handles viewpetition.html form to add signature to that petition,
+	// refreshes page to show newly added signature
 	@PostMapping("/viewpetition/{title}")
 	public String signPetition(@PathVariable String title, @ModelAttribute Signature signature, Model model) {
 		Petition petition = PetitionRepository.getPetitionByTitle(title);
