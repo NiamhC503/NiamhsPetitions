@@ -6,10 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @Controller
@@ -58,11 +55,41 @@ public class NiamhspetitionsApplication {
 		return "viewpetition";
 	}
 
+	//handles viewpetition.html form to add signature to that petition
 	@PostMapping("/viewpetition/{title}")
 	public String signPetition(@PathVariable String title, @ModelAttribute Signature signature, Model model) {
 		Petition petition = PetitionRepository.getPetitionByTitle(title);
 		petition.addSignature(signature);
 		return "redirect:/viewpetition/{title}";
+	}
+
+	//method handling form from searchpetitions,
+	//decides what to display based on if title exists in PetitionRepository or not
+	@GetMapping("/search")
+	public String searchPetitions(@RequestParam(name = "searchTerm", required = false) String searchTerm, Model model) {
+		if (searchTerm != null) {
+			//Petition foundPetition = PetitionRepository.getPetitionByTitle(title);
+			Petition foundPetition = searchPetitionByTitle(searchTerm);
+			if (foundPetition != null) {
+				// Redirect to result page with matching petition
+				model.addAttribute("petition", foundPetition);
+				//return "redirect:/result";
+				return "result";
+			} else {
+				// Redirect to no match page
+				//return "redirect:/no-match";
+				return "no-match";
+			}
+		}
+
+		return "searchpetitions";
+	}
+
+	//method to check if search term is title of existing petition in repository
+	private Petition searchPetitionByTitle(String title) {
+		// Implement  search logic here
+
+		return PetitionRepository.getPetitionByTitle(title);
 	}
 
 	public static void main(String[] args) {
