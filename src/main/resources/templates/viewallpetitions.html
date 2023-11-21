@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--    <meta charset="UTF-8">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>View All Test Petitions</title>
+</head>
+<body>
+
+<h2>View All Petitions</h2>
+
+<table border="1">
+    <tbody>
+    <tr>
+        <th>Author</th>
+        <th>Name</th>
+    </tr>
+    <tr th:each="petition : ${petitions}">
+        <td>
+            <a th:href="@{/viewpetition/{title}(title=${petition.title})}">
+                <span th:text="${petition.title}"></span>
+            </a>
+        </td>
+        <td th:text="${petition.description}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<a href="/practice/create">
+    Create a Petition
+</a>
+
+<br>
+
+<a href="/practice/search">
+    Search Petitions
+</a>
+
+<br>
+<a th:href="@{/}">Go to Homepage</a>
+
+
+</body>
+
+</html>

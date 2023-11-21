@@ -22,6 +22,13 @@ public class NiamhspetitionsApplication {
 		return "createpetition";
 	}
 
+	//retrieves all stores petitions and presents them on "/viewallpetitions" page
+	@GetMapping("/viewallpetitions")
+	public String viewAllPetitions(Model model) {
+		model.addAttribute("petitions", PetitionRepository.getAllPetitions());
+		return "viewallpetitions";
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(NiamhspetitionsApplication.class, args);
 	}
