@@ -20,5 +20,12 @@ public class PetitionRepository {
         return petitionMap.values().stream().collect(Collectors.toList());
     }
 
+    //method to retrieve 1 petition and its signatures by title
+    public static Petition getPetitionByTitle(String title) {
+        Petition petition = petitionMap.get(title);
+
+        return petition;
+    }
+
 
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @SpringBootApplication
@@ -39,6 +40,15 @@ public class NiamhspetitionsApplication {
 	public String viewAllPetitions(Model model) {
 		model.addAttribute("petitions", PetitionRepository.getAllPetitions());
 		return "viewallpetitions";
+	}
+
+
+	//retrieves 1 petition based on Petition Title and displays it on viewpetition.html page
+	@GetMapping("/viewpetition/{title}")
+	public String viewPetition(@PathVariable String title, Model model) {
+		Petition petition = PetitionRepository.getPetitionByTitle(title);
+		model.addAttribute("petition", petition);
+		return "viewpetition";
 	}
 
 	public static void main(String[] args) {
