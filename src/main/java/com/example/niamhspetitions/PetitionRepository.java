@@ -24,6 +24,10 @@ public class PetitionRepository {
     public static Petition getPetitionByTitle(String title) {
         Petition petition = petitionMap.get(title);
 
+        if (petition != null && petition.getSignatures() == null) {
+            petition.setSignatures(new ArrayList<>());
+        }
+
         return petition;
     }
 
