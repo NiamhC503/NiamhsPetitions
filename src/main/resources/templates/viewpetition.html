@@ -4,10 +4,12 @@
     <!--  <meta charset="UTF-8">-->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>View Petition</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
 </head>
 <body>
 
-<h2>View Petition</h2>
+<h1>View Petition</h1>
 
 <h2 th:text="${petition.title}"></h2>
 <p th:text="${petition.description}"></p>
