@@ -1,0 +1,14 @@
+WHAT DOES THIS WEB APPLICATION DO:
+This web application allows the user to create, view, search for, and sign petitions.
+The web application has a specific HTML page for each of the above abilities,
+with links on each page to help the user navigate to the desired page.
+
+
+HOW TO USE THE WEB APPLICATION:
+The web application is designed to be deployed on a tomcat server, accessible at port 9090,
+and run through a Jenkins pipeline.
+You can open up a Virtual Machine. Run Jenkins e.g. on Port 8080.
+Create a pipeline and set it to access the Jenkinsfile of the Github project at
+www.github.com/NiamhC503/NiamhsPetitions
+On the same VM as Jenkins is running, access the deployed application at
+localhost:9090/niamhspetitions/
