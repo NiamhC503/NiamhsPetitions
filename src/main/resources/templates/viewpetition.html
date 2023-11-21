@@ -12,6 +12,14 @@
 <h2 th:text="${petition.title}"></h2>
 <p th:text="${petition.description}"></p>
 
+<div th:if="${petition.signatures}">
+    <h3>Signatures:</h3>
+    <ul>
+        <li th:each="signature : ${petition.signatures}">
+            <p th:text="${signature.name} + ' (' + ${signature.email} + ')'"></p>
+        </li>
+    </ul>
+</div>
 
 
 <a href="/practice/viewallpetitions">

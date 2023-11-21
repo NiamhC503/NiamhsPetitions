@@ -70,7 +70,7 @@ public class NiamhspetitionsApplication {
 			//create a signature and add it to petition1
 			Signature johnSignature = new Signature();
 			johnSignature.setName("John");
-			johnSignature.setEmail("john@gemail.com");
+			johnSignature.setEmail("john@gmail.com");
 			petition1.addSignature(johnSignature);
 
 			//add new petition to Repository
