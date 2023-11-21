@@ -29,6 +29,7 @@
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" th:field="*{name}" required>
     <br>
+    <br>
     <label for="email">Email:</label>
     <input type="text" id="email" name="email" th:field="*{email}" required>
     <br>
@@ -40,11 +41,14 @@
 <a th:href="@{/create}">Create a Petition</a>
 
 <br>
+<br>
 <a th:href="@{/viewallpetitions}">View All Petitions</a>
 
 <br>
+<br>
 <a th:href="@{/search}">Search Petitions</a>
 
+<br>
 <br>
 <a th:href="@{/}">Go to Homepage</a>
 

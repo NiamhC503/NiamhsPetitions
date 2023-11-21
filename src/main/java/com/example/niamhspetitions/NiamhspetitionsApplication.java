@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class NiamhspetitionsApplication {
 
-	//presents home page at path root
+	//presents home page at root
 	@GetMapping("/")
 	public String home() {
 		return "index";
 	}
 
-	//presents createpetition.html page ot "/create" path
+	//presents createpetition.html page at "/create" path
 	@GetMapping("/create")
 	public String petitionForm(Model model) {
 		model.addAttribute("petition", new Petition());
 		return "createpetition";
 	}
 
-	//handles createpetition.html form and adds user-made petition to Repository
+	//handles createpetition.html form and adds user-made petition to petition repository
 	@PostMapping("/create")
 	public String createPetition(@ModelAttribute Petition petition, Model model) {
 		// Add the new petition to the repository
@@ -35,7 +35,7 @@ public class NiamhspetitionsApplication {
 		return "redirect:/viewallpetitions";
 	}
 
-	//retrieves all stores petitions and presents them on "/viewallpetitions" page
+	//retrieves all stored petitions and presents them on "/viewallpetitions" page
 	@GetMapping("/viewallpetitions")
 	public String viewAllPetitions(Model model) {
 		model.addAttribute("petitions", PetitionRepository.getAllPetitions());
@@ -44,6 +44,7 @@ public class NiamhspetitionsApplication {
 
 	@ModelAttribute("signature")
 	public Signature signature() {
+
 		return new Signature();
 	}
 
@@ -55,7 +56,7 @@ public class NiamhspetitionsApplication {
 		return "viewpetition";
 	}
 
-	//handles viewpetition.html form to add signature to that petition
+	//handles viewpetition.html form to add signature to that petition, refreshes page to show newly added signature
 	@PostMapping("/viewpetition/{title}")
 	public String signPetition(@PathVariable String title, @ModelAttribute Signature signature, Model model) {
 		Petition petition = PetitionRepository.getPetitionByTitle(title);
@@ -64,20 +65,18 @@ public class NiamhspetitionsApplication {
 	}
 
 	//method handling form from searchpetitions,
-	//decides what to display based on if title exists in PetitionRepository or not
+	//decides what to display based on if title exists in Petition Repository or not
 	@GetMapping("/search")
 	public String searchPetitions(@RequestParam(name = "searchTerm", required = false) String searchTerm, Model model) {
 		if (searchTerm != null) {
-			//Petition foundPetition = PetitionRepository.getPetitionByTitle(title);
 			Petition foundPetition = searchPetitionByTitle(searchTerm);
 			if (foundPetition != null) {
-				// Redirect to result page with matching petition
+				// Redirect to result.html page with matching petition
 				model.addAttribute("petition", foundPetition);
 				//return "redirect:/result";
 				return "result";
 			} else {
-				// Redirect to no match page
-				//return "redirect:/no-match";
+				// Redirect to no-match.html page
 				return "no-match";
 			}
 		}
@@ -85,10 +84,8 @@ public class NiamhspetitionsApplication {
 		return "searchpetitions";
 	}
 
-	//method to check if search term is title of existing petition in repository
+	//method to check if search term is the title of existing petition in repository
 	private Petition searchPetitionByTitle(String title) {
-		// Implement  search logic here
-
 		return PetitionRepository.getPetitionByTitle(title);
 	}
 
@@ -98,7 +95,7 @@ public class NiamhspetitionsApplication {
 	}
 
 
-	//adding in random petition to be stored from beginning (not entered by user)
+	//adding in random petition to be stored from start of application (not entered by user)
 	@Component
 	public class PetitionInitializer implements CommandLineRunner {
 		@Override
