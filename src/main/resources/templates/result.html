@@ -21,18 +21,6 @@
     </ul>
 </div>
 
-<h3>Sign Petition:</h3>
-
-<form th:action="@{'/result/' + ${petition.title}}" method="post" th:object="${signature}">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" th:field="*{name}" required>
-    <br>
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" th:field="*{email}" required>
-    <br>
-    <input type="submit" value="Sign">
-</form>
-
 <br>
 
 <a th:href="@{/create}">Create a Petition</a>

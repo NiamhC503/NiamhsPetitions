@@ -10,10 +10,10 @@
 
 <br>
 
-<p>Enter a title of a petition to search for</p>
+<p>Enter a title of a petition to search for:</p>
 
 <form action="#" th:action="@{/search}" method="get">
-    <label for="searchTerm">Search Term:</label>
+    <label for="searchTerm">Search Petitions:</label>
     <input type="text" id="searchTerm" name="searchTerm" required>
     <input type="submit" value="Search">
 </form>
@@ -25,9 +25,6 @@
 
 <br>
 <a th:href="@{/viewallpetitions}">View All Petitions</a>
-
-<br>
-<a th:href="@{/search}">Search Petitions</a>
 
 <br>
 <a th:href="@{/}">Go to Homepage</a>
