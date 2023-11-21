@@ -33,26 +33,18 @@
     <input type="submit" value="Sign">
 </form>
 
-
-<a href="/practice/viewallpetitions">
-    <button>View All Petitions</button>
-</a>
-
 <br>
 
-<a href="/practice/search">
-    Search Petitions
-</a>
+<a th:href="@{/create}">Create a Petition</a>
 
 <br>
-<a href="/practice/viewallpetitions">
-    View All Petitions
-</a>
+<a th:href="@{/viewallpetitions}">View All Petitions</a>
 
 <br>
-<a href="/practice/create">
-    Create a Petition
-</a>
+<a th:href="@{/search}">Search Petitions</a>
+
+<br>
+<a th:href="@{/}">Go to Homepage</a>
 
 </body>
 </html>

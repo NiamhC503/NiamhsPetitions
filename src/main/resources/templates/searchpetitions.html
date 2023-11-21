@@ -8,11 +8,29 @@
 
 <h2>Search Petitions</h2>
 
+<br>
+
+<p>Enter a title of a petition to search for</p>
+
 <form action="#" th:action="@{/search}" method="get">
     <label for="searchTerm">Search Term:</label>
     <input type="text" id="searchTerm" name="searchTerm" required>
     <input type="submit" value="Search">
 </form>
+
+
+<br>
+
+<a th:href="@{/create}">Create a Petition</a>
+
+<br>
+<a th:href="@{/viewallpetitions}">View All Petitions</a>
+
+<br>
+<a th:href="@{/search}">Search Petitions</a>
+
+<br>
+<a th:href="@{/}">Go to Homepage</a>
 
 </body>
 </html>
