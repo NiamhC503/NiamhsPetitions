@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>No Match Found</title>
+</head>
+<body>
+
+<h2>No matching petition found.</h2>
+
+<br>
+
+<a href="/practice/search">
+    Back to Search
+</a>
+
+<br>
+<a th:href="@{/create}">Create a Petition</a>
+
+<br>
+<a th:href="@{/viewallpetitions}">View All Petitions</a>
+
+<br>
+<a th:href="@{/}">Go to Homepage</a>
+
+</body>
+</html>
