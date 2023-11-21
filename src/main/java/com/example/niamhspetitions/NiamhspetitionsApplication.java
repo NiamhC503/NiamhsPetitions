@@ -45,6 +45,10 @@ public class NiamhspetitionsApplication {
 		return "viewallpetitions";
 	}
 
+	@ModelAttribute("signature")
+	public Signature signature() {
+		return new Signature();
+	}
 
 	//retrieves 1 petition based on Petition Title and displays it on viewpetition.html page
 	@GetMapping("/viewpetition/{title}")
@@ -52,6 +56,13 @@ public class NiamhspetitionsApplication {
 		Petition petition = PetitionRepository.getPetitionByTitle(title);
 		model.addAttribute("petition", petition);
 		return "viewpetition";
+	}
+
+	@PostMapping("/viewpetition/{title}")
+	public String signPetition(@PathVariable String title, @ModelAttribute Signature signature, Model model) {
+		Petition petition = PetitionRepository.getPetitionByTitle(title);
+		petition.addSignature(signature);
+		return "redirect:/viewpetition/{title}";
 	}
 
 	public static void main(String[] args) {
