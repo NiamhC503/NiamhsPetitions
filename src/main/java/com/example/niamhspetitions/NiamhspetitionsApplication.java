@@ -24,6 +24,7 @@ public class NiamhspetitionsApplication {
 	//presents createpetition.html page ot "/create" path
 	@GetMapping("/create")
 	public String petitionForm(Model model) {
+		model.addAttribute("petition", new Petition());
 		return "createpetition";
 	}
 
